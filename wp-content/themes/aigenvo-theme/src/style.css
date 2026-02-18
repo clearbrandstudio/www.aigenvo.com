@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cyber-black text-white selection:bg-neon-blue selection:text-black;
+    font-feature-settings: "cv11", "ss01";
+    /* Inter features for cleaner look */
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r;
+  }
+
+  /* Deep Glassmorphism Utility - Refined */
+  .glass-panel {
+    @apply bg-glass-surface backdrop-blur-2xl border border-glass-border shadow-2xl;
+  }
+
+  /* Apple-style precise text */
+  .text-precise {
+    @apply tracking-tight font-medium;
+  }
+}
+
+/* Spotlight Effect */
+.bento-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.06),
+      transparent 40%);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+/* Hero Canvas underlay */
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}

@@ -1,0 +1,28 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Node Modules (if any theme uses npm)
+**/node_modules/
+**/npm-debug.log*
+**/yarn-error.log*
+
+# WordPress
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/cache/
+*.log
+
+# Docker
+db_data/
+mysql_data/

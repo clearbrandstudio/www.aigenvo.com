@@ -1,0 +1,20 @@
+{
+  "main.js": {
+    "file": "main-BYYN4ToM.js",
+    "name": "main",
+    "src": "main.js",
+    "isEntry": true,
+    "css": [
+      "style-DeMMD1Nn.css"
+    ]
+  },
+  "style.css": {
+    "file": "style-DeMMD1Nn.css",
+    "src": "style.css",
+    "isEntry": true,
+    "name": "style",
+    "names": [
+      "style.css"
+    ]
+  }
+}

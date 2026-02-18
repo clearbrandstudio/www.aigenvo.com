@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: aigenvo-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - aigenvo-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  wordpress:
+    depends_on:
+      db:
+        condition: service_healthy
+    image: wordpress:latest
+    container_name: aigenvo-wp
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      # Coolify handles the URL, but setting this is good practice so WP knows its URL
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', '${WP_URL}');
+        define('WP_SITEURL', '${WP_URL}');
+    volumes:
+      # Persistent storage for uploads and plugins installed via UI
+      - wordpress_uploads:/var/www/html/wp-content/uploads
+      - wordpress_plugins:/var/www/html/wp-content/plugins
+      # Mount the custom theme from the repository
+      - ./wp-content/themes:/var/www/html/wp-content/themes
+    networks:
+      - aigenvo-network
+    # Coolify exposes the container, no manual port mapping needed in production usually.
+    # If users want to map 80 in container to a specific port, Coolify handles that via UI.
+    expose:
+      - 80
+
+volumes:
+  db_data:
+  wordpress_uploads:
+  wordpress_plugins:
+
+
+networks:
+  aigenvo-network:
+    driver: bridge
