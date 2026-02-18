@@ -18,8 +18,8 @@ This guide explains how to deploy the Aigenvo WordPress site to your self-hosted
 
 2.  **Configuration**
     - **Build Pack**: select `Docker Compose`.
-    - **Docker Compose File**: By default Coolify looks for `docker-compose.yml`. You must change this to `docker-compose.prod.yml`.
-      - *Note: If Coolify strictly requires `docker-compose.yml`, you may need to rename it or copy the contents of `prod` into the main file in the UI editor.*
+    - **Docker Compose File**: Coolify should now automatically detect `docker-compose.yml`.
+      - *Note: We renamed the production file to `docker-compose.yml` for easier detection. The local development file is now `docker-compose.dev.yml`.*
     - **Base Directory**: `/` (default).
 
 3.  **Environment Variables**
