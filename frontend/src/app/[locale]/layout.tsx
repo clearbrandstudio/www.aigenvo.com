@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description: "AiGenvo deploys AI agents trained to perform at the level of a top-performing human sales or support employee — available 24/7.",
 };
 
-import { LanguageSwitcher } from "@/components/i18n/language-switcher";
+import { Header } from "@/components/layout/header";
 
 export default async function RootLayout({
   children,
@@ -40,7 +40,7 @@ export default async function RootLayout({
       <body
         className={`${syne.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
-        <LanguageSwitcher />
+        <Header />
         {children}
       </body>
     </html>

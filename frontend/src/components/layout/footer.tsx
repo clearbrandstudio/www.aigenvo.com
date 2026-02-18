@@ -5,7 +5,7 @@ import { Twitter, Linkedin, Facebook, Github } from "lucide-react";
 export function Footer() {
     return (
         <footer className="border-t border-white/10 bg-background pt-16 pb-8">
-            <Section className="grid gap-12 md:grid-cols-4">
+            <Section className="grid gap-12 md:grid-cols-4 max-w-7xl mx-auto px-6">
                 <div className="space-y-4">
                     <h3 className="font-display text-2xl font-bold text-white">AiGenvo</h3>
                     <p className="text-sm text-muted">
