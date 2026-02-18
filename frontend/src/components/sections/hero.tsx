@@ -8,14 +8,14 @@ import { ArrowRight, PlayCircle } from "lucide-react";
 
 export function Hero() {
     return (
-        <div className="relative min-h-screen w-full overflow-hidden bg-background">
+        <div className="relative min-h-[80vh] w-full overflow-hidden bg-background">
             {/* 3D Background */}
             <div className="absolute inset-0 z-0">
                 <ParticleField />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
             </div>
 
-            <Section className="relative z-10 flex min-h-screen flex-col justify-center pt-20">
+            <Section className="relative z-10 flex min-h-[80vh] flex-col justify-center pt-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

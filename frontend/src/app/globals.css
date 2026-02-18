@@ -7,10 +7,12 @@
 
   --color-background: #080A0F;
   --color-surface: #0D1117;
-  --color-primary: #00D4FF;
-  --color-secondary: #C9A84C;
+  --color-primary: #EB0029;
+  /* OnePlus Red */
+  --color-secondary: #FFFFFF;
   --color-muted: #6B7A8D;
-  --color-danger: #FF4444;
+  --color-danger: #EB0029;
+  /* OnePlus Red */
   --color-text-primary: #F0F4F8;
 
   /* Animations */
@@ -29,6 +31,13 @@
       box-shadow: 0 0 20px var(--color-primary);
     }
   }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
 }
 
 body {
@@ -72,7 +81,7 @@ body {
 }
 
 .text-gradient-primary {
-  background: linear-gradient(to right, #00D4FF, #0088CC);
+  background: linear-gradient(to right, #EB0029, #FF4D4D);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
