@@ -34,4 +34,17 @@ curl -L -O https://downloads.wordpress.org/plugin/redis-cache.latest-stable.zip
 unzip -q -o redis-cache.latest-stable.zip
 rm redis-cache.latest-stable.zip
 
+# Polylang
+echo "Downloading Polylang..."
+curl -L -O https://downloads.wordpress.org/plugin/polylang.latest-stable.zip
+unzip -q -o polylang.latest-stable.zip
+rm polylang.latest-stable.zip
+
+# WPGraphQL Polylang
+echo "Downloading WPGraphQL Polylang..."
+curl -L -o wp-graphql-polylang.zip https://github.com/wp-graphql/wp-graphql-polylang/archive/master.zip
+unzip -q -o wp-graphql-polylang.zip
+mv wp-graphql-polylang-master wp-graphql-polylang
+rm wp-graphql-polylang.zip
+
 echo "Plugins installed."

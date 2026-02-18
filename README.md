@@ -63,6 +63,19 @@ The WordPress Admin will be available at [http://localhost:8080/wp-admin](http:/
    - Import field groups (if available) or create "Services", "Industries", "FAQ" types.
    - Ensure "Show in GraphQL" is enabled for all field groups.
 
+### 4. 🌍 Translation Workflow (The "Genius" Part)
+We use a hybrid approach for translations to ensure maximum flexibility and ease of update:
+
+1.  **Content Pages (Home, Services, etc.):**
+    - Go to **Pages** in WordPress.
+    - Click the **+** icon next to a Khmer or Chinese flag to duplicate the English page.
+    - Edit the content in the valuable visual editor.
+    - WPGraphQL automatically serves the correct language version based on the URL (e.g., `/km/services`).
+
+2.  **Navigation & UI Strings:**
+    - Go to **Appearance > Menus** and create localized menus for each language.
+    - Assign them to their respective display locations (Main Menu EN, Main Menu KM, etc.).
+
 ## 🚢 Deployment (Coolify)
 
 This project is designed to be deployed on Coolify using Docker Compose.
