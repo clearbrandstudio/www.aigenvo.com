@@ -1,12 +1,13 @@
-<?php get_header(); ?>
-
-<div class="container mx-auto px-6 py-20">
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <article class="mb-12 prose prose-invert lg:prose-xl">
-            <h1><?php the_title(); ?></h1>
-            <?php the_content(); ?>
-        </article>
-    <?php endwhile; endif; ?>
-</div>
-
-<?php get_footer(); ?>
+<?php
+// Redirect frontend requests to Next.js app or show JSON API info
+if ( ! is_admin() ) {
+    // If environment variable NEXT_PUBLIC_URL is set, redirect there
+    // Otherwise show simple message
+    header('Content-Type: application/json');
+    echo json_encode([
+        'message' => 'AiGenvo Headless WordPress API',
+        'status' => 'active',
+        'endpoints' => '/graphql'
+    ]);
+    exit;
+}

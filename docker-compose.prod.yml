@@ -1,0 +1,27 @@
+services:
+  # In production, we might want to ensure restart policy is always always-restarted 
+  # and perhaps resource limits or different networking.
+  # This file overrides or extends docker-compose.yml.
+
+  wordpress:
+    environment:
+      WORDPRESS_DEBUG: 0
+    # Production volume mapping might differ if using named volumes for code or bind mounts
+    # For Coolify, bind mounts are fine if the repo is cloned there.
+
+  nextjs:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # These should be set in Coolify env vars, but listing keys here for reference
+      NEXT_PUBLIC_WORDPRESS_API_URL: ${NEXT_PUBLIC_WORDPRESS_API_URL}
+      WORDPRESS_AUTH_REFRESH_TOKEN: ${WORDPRESS_AUTH_REFRESH_TOKEN}
+    networks:
+      - aigenvo-network
+  # phpmyadmin is not needed in production
+  # phpmyadmin:
+  #   profiles: ["dev"]
