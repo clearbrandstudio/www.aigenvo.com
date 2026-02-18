@@ -25,12 +25,4 @@ services:
   # phpmyadmin is not needed in production
   # phpmyadmin:
   #   profiles: ["dev"]
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    restart: unless-stopped
-    depends_on:
-      - wordpress
-    networks:
-      - aigenvo-network
+  # nginx service uses the build context from docker-compose.yml by default now.

@@ -56,15 +56,16 @@ services:
   nginx:
     # In production, this service is defined in docker-compose.prod.yml to use a custom build
     # For local dev, we use the image directly.
-    image: nginx:alpine
+    # Use build context for both dev and prod to ensure consistency (and fix Coolify mount issues)
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     container_name: aigenvo-nginx
     restart: unless-stopped
     expose:
       - "80"
     volumes:
-      # Mount nginx.conf locally for dev (works fine on Mac/Linux dev)
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      # Mount wordpress files locally
+      # Mount wordpress files locally so nginx can serve static assets
       - ./wordpress:/var/www/html
     depends_on:
       - wordpress
