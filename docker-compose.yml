@@ -71,16 +71,19 @@ services:
       - wordpress
     networks:
       - aigenvo-network
-  # nextjs:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   container_name: aigenvo-nextjs
-  #   restart: unless-stopped
-  #   ports:
-  #     - "3000:3000"
-  #   networks:
-  #     - aigenvo-network
+  nextjs:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: aigenvo-nextjs
+    restart: unless-stopped
+    expose:
+      - "3000"
+    environment:
+      NEXT_PUBLIC_WORDPRESS_API_URL: ${NEXT_PUBLIC_WORDPRESS_API_URL}
+      WORDPRESS_AUTH_REFRESH_TOKEN: ${WORDPRESS_AUTH_REFRESH_TOKEN}
+    networks:
+      - aigenvo-network
 
 volumes:
   mariadb_data:
